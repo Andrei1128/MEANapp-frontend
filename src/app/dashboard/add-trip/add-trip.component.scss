@@ -1,0 +1,61 @@
+.rating {
+  margin-top: -10px;
+
+  p {
+    user-select: none;
+    margin-bottom: -10px;
+  }
+
+  nz-form-control {
+    margin-bottom: 3px;
+  }
+}
+
+input {
+  width: 98%;
+}
+
+.dollar {
+  position: relative;
+  right: 20px;
+  color: gray;
+}
+
+.fileInput {
+  margin-bottom: 0;
+}
+
+.warning {
+  align-self: center;
+  color: rgba(255, 0, 0, 0.8);
+  margin: 0;
+}
+
+.filePicker {
+  margin-right: 10px;
+  width: 87px;
+}
+
+.filePicker::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.filePicker::before {
+  content: 'Add image';
+  display: inline-block;
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.filePicker:hover::before {
+  border-color: rgba(0, 0, 0, 0.55);
+}
+
+@media only screen and (max-width: 440px) {
+  .dollar {
+    display: none;
+  }
+}

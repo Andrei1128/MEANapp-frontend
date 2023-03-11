@@ -1,0 +1,26 @@
+<div class="container">
+  <form nz-form [formGroup]="loginForm" class="form" (ngSubmit)="login()">
+    <div class="wrapper">
+    <h3>Log in</h3>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Email is missing or invalid">
+        <nz-input-group nzPrefixIcon="user">
+          <input nz-input type="email" placeholder="E-mail" [formControl]="email" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Password should have at least 8 characters">
+        <nz-input-group nzPrefixIcon="lock">
+          <input nz-input type="password" placeholder="Password" [formControl]="password" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+      <p><input type="checkbox" formControlName="rememberMe" [(ngModel)]="rememberMe"> Remember me</p>
+    <button nz-button [nzType]="'primary'">Log in</button>
+     <p>Don't have an account?<br><a (click)="toRegister()"> Register</a></p>
+    <p *ngIf="showServerError" nz-typography nzType="danger">Login failed!</p>
+  </div>
+  </form>
+</div>
+

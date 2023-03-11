@@ -1,0 +1,91 @@
+.trips {
+  display: grid;
+  width: 80vw;
+  gap: 1rem;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  margin-bottom: 100px;
+}
+
+.logout {
+  margin: 30px;
+  margin-bottom: -10px;
+  align-self: flex-end;
+}
+
+.searchBar {
+  width: 500px;
+  display: flex;
+}
+
+input {
+  margin: 0 5px 15px 0;
+}
+
+button {
+  width: 80px;
+}
+
+.sort {
+  margin: 25px 0 30px 0;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(rgb(100, 100, 100), 0.15);
+  padding: 20px 30px;
+  width: 80vw;
+}
+
+.arrow {
+  margin-left: 12px;
+  cursor: pointer;
+}
+
+.add {
+  margin-left: 17vw;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sortbtn {
+  width: auto;
+  padding-right: 5px;
+}
+
+.cancelSearch {
+  color: gray;
+  position: relative;
+  right: 100px;
+  top: 5px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .searchBar {
+    width: 80%;
+  }
+
+  .add {
+    margin-left: 0;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+
+  h1 {
+    margin-top: 25px;
+    margin-bottom: 30px;
+  }
+
+  .sort {
+    padding: 0;
+    background-color: white;
+  }
+
+  .trips {
+    width: 100vw;
+  }
+}

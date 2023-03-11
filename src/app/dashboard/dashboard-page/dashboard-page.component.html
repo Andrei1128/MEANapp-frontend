@@ -1,0 +1,35 @@
+<div class="container">
+  <button class="logout" nz-button nzType="primary" (click)="logout()">
+    LogOut!
+  </button>
+  <h1>My Trips</h1>
+  <div class="searchBar">
+    <input nz-input placeholder="Search by name, country, expenses, rating, notes..." [(ngModel)]="searched" />
+    <button nz-button nzType="primary" (click)="search()">Search</button>
+    <div *ngIf="searched!=''"><span class="cancelSearch" nz-icon nzType="close" (click)="removeSearch()"></span></div>
+  </div>
+  <div class="sort">
+    <div class="add">
+      Sort by:
+      <button class="sortbtn" nz-button nz-dropdown [nzDropdownMenu]="menu">
+        {{ selectedItem }}<span nz-icon nzType="down"></span>
+      </button>
+      <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu>
+          <li nz-menu-item (click)="selectedItem = 'entry';sort(true)">entry</li>
+          <li nz-menu-item (click)="selectedItem = 'name';sort(true)">name</li>
+          <li nz-menu-item (click)="selectedItem = 'country';sort(true)">country</li>
+          <li nz-menu-item (click)="selectedItem = 'rating';sort(true)">rating</li>
+          <li nz-menu-item (click)="selectedItem = 'expenses';sort(true)">expenses</li>
+        </ul>
+      </nz-dropdown-menu>
+      <span class="arrow" nz-icon [nzType]="iconType" (click)="sort(true)"></span>
+    </div>
+    <div>
+      <app-add-trip (add)="addTrip($event)"></app-add-trip>
+    </div>
+  </div>
+  <div class="trips">
+    <app-trip-card *ngFor="let trip of tripList" [trip]="trip" (delete)="deleteTrip(trip)"></app-trip-card>
+  </div>
+</div>

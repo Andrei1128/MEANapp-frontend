@@ -1,0 +1,47 @@
+<div class="container">
+    <form nz-form [formGroup]="registerForm" class="form" (ngSubmit)="register()">
+      <div class="wrapper">
+      <h3>Register</h3>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Email is missing or invalid!">
+          <nz-input-group nzPrefixIcon="user">
+            <input nz-input type="email" placeholder="E-mail" [formControl]="email" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip= "Requires at least 1 lowercase, 1 uppercase, 1 special character and lenght of 8">
+          <nz-input-group nzPrefixIcon="lock">
+            <input nz-input type="password" placeholder="Password" [formControl]="password" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Passwords do not match!">
+          <nz-input-group nzPrefixIcon="lock">
+            <input nz-input type="password" placeholder="Confirm Password" [formControl]="checkPassword" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="First name required!">
+          <nz-input-group nzPrefixIcon="profile">
+            <input nz-input type="firstName" placeholder="First Name" [formControl]="firstName" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Last name required!">
+          <nz-input-group nzPrefixIcon="profile">
+            <input nz-input type="lastName" placeholder="Last Name" [formControl]="lastName" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <button nz-button [nzType]="'primary'">Register</button>
+      <button nz-button nzType="primary" (click)="toLogin()">Back</button>
+      <p *ngIf="showError" nz-typography nzType="danger">Register failed!</p>
+    </div>
+    </form>
+  </div>
+  
+  

@@ -1,0 +1,16 @@
+<nz-card [nzCover]="coverTemplate" [nzActions]="[_delete]">
+  <h3>{{ trip.name }}</h3>
+  <p>{{ trip.country }}</p>
+  <p class="stars"><nz-rate [ngModel]="trip.rating" nzDisabled></nz-rate></p>
+  <p>{{ trip.expenses }} $</p>
+  <p>{{ trip.notes }}</p>
+</nz-card>
+<ng-template #coverTemplate>
+  <!-- <img src={{trip.image}} /> -->
+  <img src="assets/default_image.png" />
+</ng-template>
+<ng-template #_delete>
+  <div>
+    <span nz-icon nzType="delete" (click)="deleteTrip()"></span>
+  </div>
+</ng-template>
