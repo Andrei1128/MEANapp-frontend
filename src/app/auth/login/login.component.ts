@@ -45,9 +45,9 @@ export class LoginComponent implements OnInit {
     this.authService.login(payload).subscribe({
       next: (res) => {
         if (this.rememberMe) {
-          window.localStorage['token'] = res.token;
+          window.localStorage['token'] = res;
         } else {
-          window.sessionStorage['token'] = res.token;
+          window.sessionStorage['token'] = res;
         }
         this.router.navigate(['dashboard']);
       },

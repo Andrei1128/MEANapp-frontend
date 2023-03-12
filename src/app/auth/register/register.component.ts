@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
     };
     this.authService.register(payload).subscribe({
       next: (res) => {
-        window.sessionStorage['token'] = res.token;
+        window.sessionStorage['token'] = res;
         this.router.navigate(['dashboard']);
       },
       error: () => {
