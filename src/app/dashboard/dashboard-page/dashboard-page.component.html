@@ -1,6 +1,6 @@
 <div class="container">
   <button class="logout" nz-button nzType="primary" (click)="logout()">
-    LogOut!
+    Log out!
   </button>
   <h1>My Trips</h1>
   <div class="searchBar">
@@ -30,6 +30,7 @@
     </div>
   </div>
   <div class="trips">
-    <app-trip-card *ngFor="let trip of tripList" [trip]="trip" (delete)="deleteTrip(trip)"></app-trip-card>
+    <app-trip-card *ngFor="let trip of tripList" [trip]="trip" (delete)="deleteTrip(trip._id)"
+      (edit)="editTrip(trip._id,$event)"></app-trip-card>
   </div>
 </div>

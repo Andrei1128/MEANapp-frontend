@@ -69,11 +69,14 @@ export class DashboardPageComponent implements OnInit {
         );
     }
   }
-  deleteTrip(tripInfo: any) {
-    this.tripsService.deleteTrip(tripInfo._id).subscribe({
+  deleteTrip(id: string) {
+    this.tripsService.deleteTrip(id).subscribe({
       next: () =>
-        (this.tripList = this.tripList.filter((trip) => trip !== tripInfo)),
+        (this.tripList = this.tripList.filter((trip) => trip._id !== id)),
     });
+  }
+  editTrip(id: string, trip: any) {
+    this.tripsService.editTrip(id, trip).subscribe((res) => {});
   }
   addTrip(tripInfo: any) {
     this.tripsService.addTrip(tripInfo).subscribe((res) => {

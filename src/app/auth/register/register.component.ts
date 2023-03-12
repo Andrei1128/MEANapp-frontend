@@ -30,8 +30,6 @@ export class RegisterComponent implements OnInit {
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required]],
       checkPassword: [null, [Validators.required]],
-      firstName: [null, [Validators.required]],
-      lastName: [null, [Validators.required]],
     });
   }
 
@@ -46,8 +44,6 @@ export class RegisterComponent implements OnInit {
     const payload = {
       email: this.email.value,
       password: this.password.value,
-      firstName: this.firstName.value,
-      lastName: this.lastName.value,
     };
     this.authService.register(payload).subscribe({
       next: (res) => {
@@ -77,11 +73,5 @@ export class RegisterComponent implements OnInit {
   }
   get checkPassword(): FormControl {
     return this.registerForm.get('checkPassword') as FormControl;
-  }
-  get firstName(): FormControl {
-    return this.registerForm.get('firstName') as FormControl;
-  }
-  get lastName(): FormControl {
-    return this.registerForm.get('lastName') as FormControl;
   }
 }

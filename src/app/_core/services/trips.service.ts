@@ -21,4 +21,7 @@ export class TripsService {
   deleteTrip(tripId: string): Observable<any> {
     return this.httpClient.delete(`${this.serverUrl}/${tripId}`);
   }
+  editTrip(tripId: string, tripInfo: any): Observable<any> {
+    return this.httpClient.put(`${this.serverUrl}/${tripId}`, tripInfo);
+  }
 }

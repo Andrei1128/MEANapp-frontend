@@ -20,7 +20,6 @@ export class TokenInterceptor implements HttpInterceptor {
     } else if (window.sessionStorage['token']) {
       var token = window.sessionStorage['token'];
     }
-
     const modifiedReq = req.clone({
       headers: req.headers.set('Authorization', `Bearer ${token}`),
     });

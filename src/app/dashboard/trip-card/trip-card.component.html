@@ -10,7 +10,46 @@
   <img src="assets/default_image.png" />
 </ng-template>
 <ng-template #_delete>
-  <div>
+  <div class="actions">
+    <span nz-icon class="icon" nzType="edit" (click)="showModal()"></span>
+    <nz-modal [(nzVisible)]="isVisible" nzTitle="Edit trip" (nzOnCancel)="modalCancel()" (nzOnOk)="editTrip()">
+      <ng-container *nzModalContent>
+        <form nz-form [formGroup]="editTripForm">
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Name is missing!">
+              <input nz-input placeholder="Name" [formControl]="name" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Country is required!">
+              <input nz-input placeholder="Country" [formControl]="country" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item class="rating">
+            <nz-form-control nzErrorTip="Rating is required!">
+              <p>Rating: <nz-rate [formControl]="rating"></nz-rate></p>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Expenses must be a number!">
+              <input nz-input placeholder="Expenses" [formControl]="expenses" />
+              <span class="dollar">$</span>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Notes contains at least 16 characters!">
+              <input nz-input placeholder="Notes" [formControl]="notes" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item class="fileInput">
+            <input class="filePicker" type="file" (change)="uploadImage($event)" />
+            <p class="warning" *ngIf="incorrectFile">
+              Chosed file is not an image!
+            </p>
+          </nz-form-item>
+        </form>
+      </ng-container>
+    </nz-modal>
     <span nz-icon nzType="delete" (click)="deleteTrip()"></span>
   </div>
 </ng-template>
