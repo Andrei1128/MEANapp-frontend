@@ -16,7 +16,7 @@
       <ng-container *nzModalContent>
         <form nz-form [formGroup]="editTripForm">
           <nz-form-item>
-            <nz-form-control nzErrorTip="Name is missing!">
+            <nz-form-control nzErrorTip="Name should have at least 6 characters!">
               <input nz-input placeholder="Name" [formControl]="name" />
             </nz-form-control>
           </nz-form-item>
@@ -31,15 +31,13 @@
             </nz-form-control>
           </nz-form-item>
           <nz-form-item>
-            <nz-form-control nzErrorTip="Expenses must be a number!">
+            <nz-form-control nzErrorTip="Expenses must be a positive number!">
               <input nz-input placeholder="Expenses" [formControl]="expenses" />
               <span class="dollar">$</span>
             </nz-form-control>
           </nz-form-item>
           <nz-form-item>
-            <nz-form-control nzErrorTip="Notes contains at least 16 characters!">
-              <input nz-input placeholder="Notes" [formControl]="notes" />
-            </nz-form-control>
+            <input nz-input placeholder="Notes" [formControl]="notes" />
           </nz-form-item>
           <nz-form-item class="fileInput">
             <input class="filePicker" type="file" (change)="uploadImage($event)" />

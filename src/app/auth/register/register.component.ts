@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
-      password: [null, [Validators.required]],
+      password: [null, [Validators.required, Validators.minLength(8)]],
       checkPassword: [null, [Validators.required]],
     });
   }
@@ -54,15 +54,6 @@ export class RegisterComponent implements OnInit {
         this.showError = true;
       },
     });
-  }
-
-  passwordValidator(control: AbstractControl) {
-    const password = control.value;
-    const valid = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])(?=.{8,})/.test(
-      password
-    );
-    if (!valid) return { passwordInvalid: true };
-    return null;
   }
 
   get email(): FormControl {

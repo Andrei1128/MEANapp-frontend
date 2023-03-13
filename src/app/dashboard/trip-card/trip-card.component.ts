@@ -25,9 +25,8 @@ export class TripCardComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    console.log(this.trip);
     this.editTripForm = this.formBuilder.group({
-      name: [this.trip.name, [Validators.required]],
+      name: [this.trip.name, [Validators.required, Validators.minLength(6)]],
       country: [
         this.trip.country,
         [Validators.required, Validators.minLength(4)],
@@ -40,7 +39,7 @@ export class TripCardComponent implements OnInit {
         this.trip.expenses,
         [Validators.required, this.expensesValidator],
       ],
-      notes: [this.trip.notes, [Validators.required, Validators.minLength(16)]],
+      notes: [this.trip.notes],
     });
   }
 

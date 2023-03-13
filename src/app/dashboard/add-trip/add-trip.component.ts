@@ -25,11 +25,11 @@ export class AddTripComponent implements OnInit {
 
   ngOnInit(): void {
     this.addTripForm = this.formBuilder.group({
-      name: [null, [Validators.required]],
+      name: [null, [Validators.required, Validators.minLength(6)]],
       country: [null, [Validators.required, Validators.minLength(4)]],
       rating: [null, [Validators.required, Validators.pattern(/^[1-5]$/)]],
       expenses: [null, [Validators.required, this.expensesValidator]],
-      notes: [null, [Validators.required, Validators.minLength(16)]],
+      notes: [null],
     });
   }
 
