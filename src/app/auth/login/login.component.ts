@@ -15,7 +15,8 @@ import { AuthService } from 'src/app/_core/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  showServerError: boolean;
+  pwError: boolean;
+  emailError: boolean;
   rememberMe: boolean;
 
   constructor(
@@ -37,6 +38,8 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
+    this.pwError = false;
+    this.emailError = false;
     if (this.loginForm.invalid) return;
     const payload = {
       email: this.email.value,
@@ -51,8 +54,9 @@ export class LoginComponent implements OnInit {
         }
         this.router.navigate(['dashboard']);
       },
-      error: () => {
-        this.showServerError = true;
+      error: (e: any) => {
+        if (e.error === 'Email not found!') this.emailError = true;
+        else if (e.error === 'Wrong password!') this.pwError = true;
       },
     });
   }

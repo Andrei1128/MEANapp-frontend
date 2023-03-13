@@ -38,6 +38,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register(): void {
+    this.showError = false;
     if (this.password.value !== this.checkPassword.value)
       this.checkPassword.setErrors({ required: true });
     if (this.registerForm.invalid) return;
@@ -50,8 +51,8 @@ export class RegisterComponent implements OnInit {
         window.sessionStorage['token'] = res;
         this.router.navigate(['dashboard']);
       },
-      error: () => {
-        this.showError = true;
+      error: (e: any) => {
+        if (e.error === 'Email used!') this.showError = true;
       },
     });
   }

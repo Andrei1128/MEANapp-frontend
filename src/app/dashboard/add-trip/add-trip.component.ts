@@ -20,16 +20,18 @@ export class AddTripComponent implements OnInit {
   isVisible: boolean;
   image: string;
   incorrectFile: boolean;
+  submitted: boolean;
 
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
+    this.submitted = false;
     this.addTripForm = this.formBuilder.group({
       name: [null, [Validators.required, Validators.minLength(6)]],
       country: [null, [Validators.required, Validators.minLength(4)]],
       rating: [null, [Validators.required, Validators.pattern(/^[1-5]$/)]],
       expenses: [null, [Validators.required, this.expensesValidator]],
-      notes: [null],
+      notes: [''],
     });
   }
 
@@ -69,9 +71,11 @@ export class AddTripComponent implements OnInit {
   modalCancel() {
     this.isVisible = false;
   }
-
   addTrip(): void {
-    if (this.addTripForm.invalid) return;
+    if (this.addTripForm.invalid) {
+      this.submitted = true;
+      return;
+    }
     this.tripInfo = {
       ...this.addTripForm.value,
       image: this.image || 'assets/default_image.png',
