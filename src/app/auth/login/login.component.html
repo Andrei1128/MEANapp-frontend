@@ -3,14 +3,16 @@
     <div class="wrapper">
       <h3>Log in</h3>
       <nz-form-item>
-        <nz-form-control nzErrorTip="Email is missing or invalid">
+        <nz-form-control [nzValidateStatus]="email.invalid && submitted ? 'error' : null"
+          nzErrorTip="Email is missing or invalid">
           <nz-input-group nzPrefixIcon="user">
             <input nz-input type="email" placeholder="E-mail" [formControl]="email" />
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-control nzErrorTip="Password should have at least 8 characters">
+        <nz-form-control [nzValidateStatus]="password.invalid && submitted ? 'error' : null"
+          nzErrorTip="Password should have at least 8 characters">
           <nz-input-group nzPrefixIcon="lock">
             <input nz-input type="password" placeholder="Password" [formControl]="password" />
           </nz-input-group>

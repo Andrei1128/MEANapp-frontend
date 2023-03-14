@@ -80,6 +80,7 @@ export class AddTripComponent implements OnInit {
       ...this.addTripForm.value,
       image: this.image || 'assets/default_image.png',
     };
+    this.submitted = false;
     this.add.emit(this.tripInfo);
     this.image = '';
     this.isVisible = false;

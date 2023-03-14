@@ -16,4 +16,7 @@ export class AuthService {
   register(body: any): Observable<any> {
     return this.httpClient.post(`${this.serverUrl}/signup`, body);
   }
+  logout(): Observable<any> {
+    return this.httpClient.delete(`${this.serverUrl}/logout`);
+  }
 }

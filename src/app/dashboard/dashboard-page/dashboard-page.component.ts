@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/_core/services/auth.service';
 import { TripsService } from 'src/app/_core/services/trips.service';
 
 @Component({
@@ -14,14 +15,21 @@ export class DashboardPageComponent implements OnInit {
   iconType = 'caret-up';
   searched: string = '';
   searchTerm: string = '';
+  Loaded: boolean;
 
-  constructor(private router: Router, private tripsService: TripsService) {}
+  constructor(
+    private router: Router,
+    private tripsService: TripsService,
+    private userService: AuthService
+  ) {}
 
   ngOnInit(): void {
+    this.Loaded = false;
     this.getTrips();
   }
   getTrips() {
     this.tripsService.getTrips().subscribe((res) => {
+      this.Loaded = true;
       this.tripList = res;
       if (this.selectedItem == 'entry') {
         if (this.iconType == 'caret-down') this.tripList.reverse();
@@ -29,7 +37,7 @@ export class DashboardPageComponent implements OnInit {
     });
   }
   search() {
-    if (this.searched == '') return this.ngOnInit();
+    if (this.searched == '') return this.getTrips();
     this.searchTerm = this.searched.toLowerCase();
     this.tripsService.getTrips().subscribe((res) => {
       this.tripList = res.filter((trip: any) => {
@@ -92,8 +100,12 @@ export class DashboardPageComponent implements OnInit {
     });
   }
   logout() {
-    window.localStorage.clear();
-    window.sessionStorage.clear();
-    this.router.navigate(['auth']);
+    this.userService.logout().subscribe({
+      next: () => {
+        window.localStorage.clear();
+        window.sessionStorage.clear();
+        this.router.navigate(['auth']);
+      },
+    });
   }
 }

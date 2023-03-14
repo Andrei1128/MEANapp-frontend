@@ -69,6 +69,19 @@ h1 {
   margin-bottom: 20px;
 }
 
+.loading {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    font-size: 100px;
+    color: gray;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .searchBar {
     width: 80%;

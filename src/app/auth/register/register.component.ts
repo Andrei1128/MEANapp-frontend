@@ -18,6 +18,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   showError: boolean;
   showPasswordNotMatch: boolean;
+  submitted: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -41,7 +42,10 @@ export class RegisterComponent implements OnInit {
     this.showError = false;
     if (this.password.value !== this.checkPassword.value)
       this.checkPassword.setErrors({ required: true });
-    if (this.registerForm.invalid) return;
+    if (this.registerForm.invalid) {
+      this.submitted = true;
+      return;
+    }
     const payload = {
       email: this.email.value,
       password: this.password.value,

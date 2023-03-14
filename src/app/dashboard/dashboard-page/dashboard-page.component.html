@@ -1,4 +1,5 @@
-<div class="container">
+<div class="loading" *ngIf="!Loaded"> <span nz-icon nzSpin [nzType]="'loading'"></span></div>
+<div class="container" *ngIf="Loaded">
   <button class="logout" nz-button nzType="primary" (click)="logout()">
     Log out!
   </button>

@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   pwError: boolean;
   emailError: boolean;
   rememberMe: boolean;
+  submitted: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -40,7 +41,10 @@ export class LoginComponent implements OnInit {
   login(): void {
     this.pwError = false;
     this.emailError = false;
-    if (this.loginForm.invalid) return;
+    if (this.loginForm.invalid) {
+      this.submitted = true;
+      return;
+    }
     const payload = {
       email: this.email.value,
       password: this.password.value,
