@@ -1,5 +1,5 @@
 # MyTrips-frontend
-### Aplicatia este un alt proiect ce contine adaugiri
+### Aplicatia este un alt proiect ce contine adaugari
 https://github.com/Andrei1128/Practica-CST-Frontend
 ## Adaugari:
  - Aplicatie este legata de un API - https://github.com/Andrei1128/MEANapp-backend
